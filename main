@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miss You Envelope</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .envelope {
+            width: 500px;
+            height: 300px;
+            background-color: #ffe0bd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .flap {
+            width: 100%;
+            height: 50%;
+            background-color: #ffad9f;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform-origin: top;
+            transform: perspective(1000px) rotateX(0deg);
+            transition: transform 0.5s;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+        
+        .envelope:hover .flap {
+            transform: perspective(1000px) rotateX(-180deg);
+        }
+        
+        .message {
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            color: #555;
+            display: none;
+        }
+        
+        .envelope:hover .message {
+            display: block;
+        }
+        
+        .heart {
+            font-size: 24px;
+            color: #ff6384;
+        }
+    </style>
+</head>
+<body>
+    <div class="envelope" id="envelope">
+        <div class="flap"></div>
+        <div class="message" id="message">
+            <h2><span class="heart">❤️</span> I Miss You <span class="heart">❤️</span></h2>
+            <p>Dear [preeti],</p>
+            <p>Just wanted to let you know that I miss you so much. Can't wait to see you again soon!</p>
+            <p>With love,</p>
+            <p>[Avi]</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('envelope').addEventListener('mouseenter', function() {
+            document.querySelector('.flap').style.transform = 'perspective(1000px) rotateX(-180deg)';
+            document.querySelector('.message').style.display = 'block';
+        });
+
+        document.getElementById('envelope').addEventListener('mouseleave', function() {
+            document.querySelector('.flap').style.transform = 'perspective(1000px) rotateX(0deg)';
+            document.querySelector('.message').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
